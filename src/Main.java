@@ -24,6 +24,8 @@ public class Main
           int guessedNumber = getKeyboardInt(sc);
 
 
+          System.out.print("How much money do you want to bet on your number? >>> ");
+          float betAmount = getKeyboardFloat(sc);
       }
     }
 public static int getKeyboardInt(Scanner sc)
@@ -32,8 +34,7 @@ public static int getKeyboardInt(Scanner sc)
     {
         try
         {
-            int guessedNumber = sc.nextInt();
-            sc.nextLine();
+            int guessedNumber = Integer.parseInt(sc.nextLine());
             return guessedNumber;
         }
         catch (Exception e)
@@ -42,5 +43,24 @@ public static int getKeyboardInt(Scanner sc)
         }
     }
 }
+    public static float getKeyboardFloat(Scanner sc)
+    {
+        while(true)
+        {
+            try
+            {
+               float guessedNumber = Float.parseFloat(sc.nextLine());
+                if (guessedNumber == Math.floor(guessedNumber * 100) / 100)
+                    return guessedNumber;
+                else
+                    System.out.println("The value entered was not a valid money number");
+            }
+            catch (Exception e)
+            {
+                System.out.println("Not an Float!");
+
+            }
+        }
+    }
 
 }
