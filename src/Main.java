@@ -26,6 +26,36 @@ public class Main
 
           System.out.print("How much money do you want to bet on your number? >>> ");
           float betAmount = getKeyboardFloat(sc);
+
+          int target  = (int)(Math.random() * 100);
+
+          if (target < guessedNumber)
+          {
+              money = money - betAmount;
+              System.out.println("You lost loser! You lost all of your bet money! You'll never win!");
+
+          }
+          else if ( target == guessedNumber)
+          {
+              money = money + (betAmount * 10);
+              System.out.println("This...wasn't supposed to happen... Congrats! You got a jackpot!");
+          }
+          else
+          {
+              double multiplier = Math.pow(((double)(guessedNumber) / 50), 2);
+              money = money + (betAmount * multiplier);
+              money = Math.floor(money * 100) / 100;
+              System.out.println("You won, kinda....");
+          }
+          System.out.println("Your new money amount: " + money);
+      }
+      if(money == 0)
+      {
+          System.out.println("You lost! Imagine being broke...");
+      }
+      else
+      {
+          System.out.println("You won! Congratulations!");
       }
     }
 public static int getKeyboardInt(Scanner sc)
